@@ -3,14 +3,14 @@ import mysql from "mysql";
 import cors from "cors";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
-import subscribeRoutes from "./routes/subscribe.js";
-
+// import subscribeRoutes from "./routes/subscribe.js";
+// app.use("/subscribe", subscribeRoutes);
 dotenv.config();
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
-// app.use("/subscribe", subscribeRoutes);
+
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USERNAME,
