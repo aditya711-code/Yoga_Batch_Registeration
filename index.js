@@ -12,10 +12,10 @@ app.use(bodyParser.json());
 app.use(cors());
 // app.use("/subscribe", subscribeRoutes);
 const db = mysql.createConnection({
-  host: "localhost",
+  host: process.env.DB_HOST,
   user: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
-  database: "flexmoney",
+  database: process.env.DB_NAME,
 });
 const paymentProcess = async (userId) => {
   const q = "Insert into payment (user_id,date) VALUES (?,NOW())";
@@ -47,6 +47,6 @@ app.get("/batch", (err, res) => {
   });
 });
 
-app.listen(3001, () => {
+app.listen(process.env.PORT, () => {
   console.log("listening");
 });
